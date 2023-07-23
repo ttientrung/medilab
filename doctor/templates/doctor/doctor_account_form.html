@@ -1,0 +1,176 @@
+{% extends '_master.html' %}
+{% load static %}
+{% block style_login %}
+<link rel="stylesheet" href="{% static 'assets/css/styles.min.css' %}" />
+{% endblock style_login %}
+{% block content %}
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  style="top: 110px;">
+  <!-- Sidebar Start -->
+  <aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div>
+      <!-- Sidebar navigation-->
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+        <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse"
+          style="position: absolute; top: 10px; left: 240px;">
+          <i class="ti ti-x fs-4"></i>
+        </div>
+        <ul id="sidebarnav">
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Your information</span>
+          </li>
+          <hr>
+          <li class="sidebar-item">
+            <div class="container-fluid">
+              <div class="card d-flex align-items-center justify-content-center">
+                <img src="{{profile.profile_image.url}}" class="rounded-circle" style="position: relative; top: 20px; max-width: 50%;
+                max-height: 50%;" alt="...">
+                <div class="card-body">
+                  <h3 class="card-title" style="text-align: center;">{{profile.name}}</h3>
+                </div>
+              </div>
+            </div>
+          </li>
+          <hr>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{% url 'doctor:doctor-account' %}" aria-expanded="false">
+              <span>
+                <i class="ti ti-layout-dashboard"></i>
+              </span>
+              <span class="hide-menu">Your profile</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{% url 'doctor:doctor-account-appointment' %}" aria-expanded="false">
+              <span>
+                <i class="ti ti-file-description"></i>
+              </span>
+              <span class="hide-menu">Your appointments</span>
+            </a>
+          </li>
+          <hr>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{% url 'user:logout' %}" aria-expanded="false">
+              <span>
+                <i class="ti ti-login"></i>
+              </span>
+              <span class="hide-menu">Log Out</span>
+            </a>
+          </li>
+      </nav>
+      <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+  </aside>
+  <!--  Sidebar End -->
+  <!--  Main wrapper -->
+  <div class="body-wrapper">
+    <div class="container-fluid">
+      <nav>
+        <ul>
+          <li class="nav-item d-block d-xl-none">
+            <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse">
+              <i class="ti ti-menu-2"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!--  Row 1 -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold mb-4">Forms</h5>
+          <div class="card">
+            <div class="card-body">
+              <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="mb-3 col-4">
+                    <label class="form-label">{{profileForm.name.label}}</label>
+                    {{profileForm.name}}
+                  </div>
+                  <div class="mb-3 col-4">
+                    <label class="form-label">{{profileForm.email.label}}</label>
+                    {{profileForm.email}}
+                  </div>
+                  <div class="mb-3 col-4">
+                    <label class="form-label">{{profileForm.phone_number.label}}</label>
+                    {{profileForm.phone_number}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="mb-3 col-6">
+                    <label class="form-label">{{profileForm.age.label}}</label>
+                    {{profileForm.age}}
+                  </div>
+                  <div class="mb-3 col-6">
+                    <label class="form-label">{{profileForm.gender.label}}</label>
+                    {{profileForm.gender}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="mb-3 col-4">
+                    <label class="form-label">{{profileForm.short_intro.label}}</label>
+                    {{profileForm.short_intro}}
+                  </div>
+                  <div class="mb-3 col-4">
+                    <label class="form-label">{{profileForm.department.label}}</label>
+                    {{profileForm.department}}
+                  </div>
+                  <div class="mb-3 col-4">
+                    <label class="form-label">{{profileForm.location.label}}</label>
+                    {{profileForm.location}}
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">{{profileForm.bio.label}}</label>
+                  {{profileForm.bio}}
+                </div>
+                <div class="row">
+                  <div class="mb-3 col-3">
+                    <label class="form-label">{{profileForm.social_twitter.label}}</label>
+                    {{profileForm.social_twitter}}
+                  </div>
+                  <div class="mb-3 col-3">
+                    <label class="form-label">{{profileForm.social_facebook.label}}</label>
+                    {{profileForm.social_facebook}}
+                  </div>
+                  <div class="mb-3 col-3">
+                    <label class="form-label">{{profileForm.social_instagram.label}}</label>
+                    {{profileForm.social_instagram}}
+                  </div>
+                  <div class="mb-3 col-3">
+                    <label class="form-label">{{profileForm.social_linkedin.label}}</label>
+                    {{profileForm.social_linkedin}}
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">{{profileForm.profile_image.label}}</label>
+                  {{profileForm.profile_image}}
+                </div>
+                <div>
+                  <button type='submit' class='btn btn-primary' style='margin-top: 30px'>Update Your Information
+                  </button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block extra_script %}
+<script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/sidebarmenu.js' %}"></script>
+<script src="{% static 'assets/js/app.min.js' %}"></script>
+<script src="{% static 'assets/libs/apexcharts/dist/apexcharts.min.js' %}"></script>
+<script src="{% static 'assets/libs/simplebar/dist/simplebar.js' %}"></script>
+<script src="{% static 'assets/js/dashboard.js' %}"></script>
+{% endblock extra_script %}

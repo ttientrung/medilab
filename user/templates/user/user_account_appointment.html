@@ -1,0 +1,240 @@
+{% extends '_master.html' %}
+{% load static %}
+{% block style_login %}
+<link rel="stylesheet" href="{% static 'assets/css/styles.min.css' %}" />
+{% endblock style_login %}
+{% block content %}
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  style="top: 110px;">
+  <!-- Sidebar Start -->
+  <aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div>
+      <!-- Sidebar navigation-->
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+        <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse"
+          style="position: absolute; top: 10px; left: 240px;">
+          <i class="ti ti-x fs-4"></i>
+        </div>
+        <ul id="sidebarnav">
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Your information</span>
+          </li>
+          <hr>
+          <li class="sidebar-item">
+            <div class="container-fluid">
+              <div class="card d-flex align-items-center justify-content-center">
+                <img src="{{profile.profile_image.url}}" class="rounded-circle" style="position: relative; top: 20px; max-width: 50%;
+                max-height: 50%;" alt="...">
+                <div class="card-body">
+                  <h3 class="card-title" style="text-align: center;">{{profile.name}}</h3>
+                </div>
+              </div>
+            </div>
+          </li>
+          <hr>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{% url 'user:user-account' %}" aria-expanded="false">
+              <span>
+                <i class="ti ti-layout-dashboard"></i>
+              </span>
+              <span class="hide-menu">Your profile</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{% url 'user:user-account-appointment' %}" aria-expanded="false">
+              <span>
+                <i class="ti ti-file-description"></i>
+              </span>
+              <span class="hide-menu">Your appointments</span>
+            </a>
+          </li>
+          <hr>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{% url 'user:logout' %}" aria-expanded="false">
+              <span>
+                <i class="ti ti-login"></i>
+              </span>
+              <span class="hide-menu">Log Out</span>
+            </a>
+          </li>
+      </nav>
+      <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+  </aside>
+  <!--  Sidebar End -->
+  <!--  Main wrapper -->
+  <div class="body-wrapper">
+    <div class="container-fluid">
+      <nav>
+        <ul>
+          <li class="nav-item d-block d-xl-none">
+            <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse">
+              <i class="ti ti-menu-2"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!--  Row 1 -->
+      <div class="row">
+        <div class="col-lg-12 d-flex align-items-strech">
+          <div class="card w-100">
+            <div class="card-body">
+              {% if appointments|length > 0 %}
+              <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                <div class="mb-3 mb-sm-0">
+                  <h5 class="card-title fw-semibold">Your Appointments</h5>
+                </div>
+              </div>
+              <!-- <div id="chart"></div> -->
+              <div class="table-responsive">
+                <table class="table text-nowrap mb-0 align-middle">
+                  <thead class="text-dark fs-4">
+                    <tr>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Id</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Patient</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Doctor</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Department</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Appointment Date</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Created Date</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Update</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Delete</h6>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for appointment in appointments %}
+                    <tr>
+                      <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">{{forloop.counter}}</h6>
+                      </td>
+                      <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-1"><a data-bs-toggle="modal" data-bs-target="#appointment{{appointment.pk}}">{{appointment.owner}}</a></h6>
+                      </td>
+                      <td class="border-bottom-0">
+                        <h6 class="mb-0 fw-normal mb-1">{{appointment.doctor}}</h6>
+                      </td>
+                      <td class="border-bottom-0">
+                        <h6 class="mb-0 fw-normal mb-1">{{appointment.department}}</h6>
+                      </td>
+                      <td class="border-bottom-0">
+                        <h6 class="mb-0 fw-normal mb-1">{{appointment.appointment_date}}</h6>
+                      </td>
+                      <td class="border-bottom-0">
+                        <h6 class="mb-0 fw-normal mb-1">{{appointment.created_day}}</h6>
+                      </td>
+                      <td class="border-bottom-0">
+                        <a href="{% url 'user:appointment-update' appointment.pk %}" class="appointment-btn" style="margin-left: 0;"><span
+                          class="d-none d-md-inline">Update</span></a>
+                      </td>
+                      <td class="border-bottom-0">
+                        <a href="{% url 'user:appointment-delete' appointment.pk %}" class="appointment-btn" style="margin-left: 0;"><span
+                          class="d-none d-md-inline">Delete</span></a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              {% else %}
+              <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                <div class="mb-3 mb-sm-0">
+                  <h5 class="card-title fw-semibold">You don't have any appointment at this point!!</h5>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+{% for appointment in appointments %}
+<!-- Modal -->
+<div class="modal fade" id="appointment{{ appointment.pk }}" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="appointmentModalLabel">Appointment Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td>{{ appointment.name }}</td>
+            </tr>
+            <tr>
+              <th>Email:</th>
+              <td>{{ appointment.email }}</td>
+            </tr>
+            <tr>
+              <th>Phone Number:</th>
+              <td>{{ appointment.phone_number }}</td>
+            </tr>
+            <tr>
+              <th>Appointment Date:</th>
+              <td>{{ appointment.appointment_date }}</td>
+            </tr>
+            <tr>
+              <th>Doctor:</th>
+              <td>{{ appointment.doctor }}</td>
+            </tr>
+            <tr>
+              <th>Department:</th>
+              <td>{{ appointment.department }}</td>
+            </tr>
+            <tr>
+              <th>Message:</th>
+              <td>{{ appointment.message }}</td>
+            </tr>
+            <tr>
+              <th>Created Day:</th>
+              <td>{{ appointment.created_day }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="appointment-btn btn" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+{% endblock content %}
+
+{% block extra_script %}
+<script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/sidebarmenu.js' %}"></script>
+<script src="{% static 'assets/js/app.min.js' %}"></script>
+<script src="{% static 'assets/libs/apexcharts/dist/apexcharts.min.js' %}"></script>
+<script src="{% static 'assets/libs/simplebar/dist/simplebar.js' %}"></script>
+<script src="{% static 'assets/js/dashboard.js' %}"></script>
+{% endblock extra_script %}

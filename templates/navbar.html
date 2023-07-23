@@ -1,0 +1,88 @@
+{% load user_group_tags %}
+{% load static %}
+<!-- ======= Top Bar ======= -->
+<div id="topbar" class="d-flex align-items-center fixed-top">
+  <div class="container d-flex justify-content-between">
+    <div class="contact-info d-flex align-items-center">
+      <i class="bi bi-envelope"></i> <a href="mailto:tientrung2899@example.com">tientrung2899@example.com</a>
+      <i class="bi bi-phone"></i> +84 358 432 114
+    </div>
+    <div class="d-none d-lg-flex social-links align-items-center">
+      {% comment %} <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> {% endcomment %}
+      <a href="https://www.facebook.com/profile.php?id=100007141606256" class="facebook"><i
+          class="bi bi-facebook"></i></a>
+      <a href="https://www.instagram.com/ttientrung/" class="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/tr%E1%BA%A7n-ti%E1%BA%BFn-trung-a85280204/" class="linkedin"><i
+          class="bi bi-linkedin"></i></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+    {% if request.user|has_group:"doctor" %}
+    <h1 class="logo me-auto"><a href="{% url 'doctor:doctor-account' %}">Medilab</a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'user:logout' %}" class="appointment-btn scrollto"><span
+      class="d-none d-md-inline">Log Out</span></a>
+    {% else %}
+    <a href="{% url 'user:login-register' %}" class="appointment-btn scrollto"><span
+        class="d-none d-md-inline">Log In/Sign Up</span></a>
+    {% endif %}
+    {% else %}
+    <h1 class="logo me-auto"><a href="{% url 'medilab:index' %}">Medilab</a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    
+    <nav id="navbar" class="navbar order-last order-lg-0 ">
+      <ul>
+        <li><a class="nav-link scrollto" href="{% url 'medilab:index' %}#hero">Home</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'medilab:index' %}#about">About</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'medilab:index' %}#services">Services</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'medilab:index' %}#departments">Departments</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'medilab:index' %}#doctors">Doctors</a></li>
+        <li class="dropdown active"><a class="nav-link {% if page == 'healthcure' %}active{% endif %}"href="#"><span>Health Cure</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="{% url 'healthcure:breast-cancer' %}">Breast Cancer</a></li>
+            {% comment %} <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
+                  class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="#">Deep Drop Down 1</a></li>
+                <li><a href="#">Deep Drop Down 2</a></li>
+                <li><a href="#">Deep Drop Down 3</a></li>
+                <li><a href="#">Deep Drop Down 4</a></li>
+                <li><a href="#">Deep Drop Down 5</a></li>
+              </ul>
+            </li> {% endcomment %}
+            <li><a href="{% url 'healthcure:diabetes' %}">Diabetes</a></li>
+            <li><a href="{% url 'healthcure:heart-disease' %}">Heart Diseases</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link scrollto" href="{% url 'medilab:index' %}#contact">Contact</a></li>
+        {% if request.user.is_authenticated %}
+        {% comment %} {% if user. %} {% endcomment %}
+        <li><a class="nav-link {% if page == 'account' %}active{% endif %}" href="{% url 'user:user-account' %}">
+          <i class="bi bi-person-circle" style='font-size:26px;'></i>
+          {% comment %} <img src="{% if request.user.is_authenticated %}{{request.user.profile.profile_image.url}}{% else %}{% static 'images/profiles/user-default.png' %}{% endif %}" alt="" width="35" height="35" class="rounded-circle"> {% endcomment %}
+        </a></li>
+        {% endif %}
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+    <a href="{% url 'medilab:index' %}#appointment" class="appointment-btn scrollto"><span
+        class="d-none d-md-inline">Make an</span> Appointment</a>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'user:logout' %}" class="appointment-btn scrollto"><span
+      class="d-none d-md-inline">Log Out</span></a>
+    {% else %}
+    <a href="{% url 'user:login-register' %}" class="appointment-btn scrollto"><span
+        class="d-none d-md-inline">Log In/Sign Up</span></a>
+    {% endif %}
+    {% endif %}
+  </div>
+</header><!-- End Header -->

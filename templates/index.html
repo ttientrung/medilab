@@ -1,0 +1,546 @@
+{% extends '_master.html' %}
+{% load static %}
+{% block hero %}{% include 'hero_section.html' %}{% endblock hero %}
+{% block content %}
+<main id="main">
+  <!-- ======= Why Us Section ======= -->
+  <section id="why-us" class="why-us">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-4 d-flex align-items-stretch">
+          <div class="content">
+            <h3>Why Choose Medilab?</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+            </p>
+            <div class="text-center">
+              <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 d-flex align-items-stretch">
+          <div class="icon-boxes d-flex flex-column justify-content-center">
+            <div class="row">
+              <div class="col-xl-4 d-flex align-items-stretch">
+                <div class="icon-box mt-4 mt-xl-0">
+                  <i class="bx bx-receipt"></i>
+                  <h4>Corporis voluptates sit</h4>
+                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                </div>
+              </div>
+              <div class="col-xl-4 d-flex align-items-stretch">
+                <div class="icon-box mt-4 mt-xl-0">
+                  <i class="bx bx-cube-alt"></i>
+                  <h4>Ullamco laboris ladore pan</h4>
+                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                </div>
+              </div>
+              <div class="col-xl-4 d-flex align-items-stretch">
+                <div class="icon-box mt-4 mt-xl-0">
+                  <i class="bx bx-images"></i>
+                  <h4>Labore consequatur</h4>
+                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                </div>
+              </div>
+            </div>
+          </div><!-- End .content-->
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Why Us Section -->
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+          <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
+        </div>
+
+        <div
+          class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+          <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
+          <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus
+            laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla
+            tenetur. Suscipit aut voluptate.</p>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-fingerprint"></i></div>
+            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
+              occaecati cupiditate non provident</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-gift"></i></div>
+            <h4 class="title"><a href="">Nemo Enim</a></h4>
+            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+              voluptatum deleniti atque</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-atom"></i></div>
+            <h4 class="title"><a href="">Dine Pad</a></h4>
+            <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut
+              deserunt minus aut eligendi omnis</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+
+  <!-- ======= Counts Section ======= -->
+  <section id="counts" class="counts">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6">
+          <div class="count-box">
+            <i class="fas fa-user-md"></i>
+            <span data-purecounter-start="0" data-purecounter-end="{{doctors|length}}" data-purecounter-duration="1"
+              class="purecounter"></span>
+            <p>Doctors</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+          <div class="count-box">
+            <i class="far fa-hospital"></i>
+            <span data-purecounter-start="0" data-purecounter-end="{{departments|length}}" data-purecounter-duration="1"
+              class="purecounter"></span>
+            <p>Departments</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+          <div class="count-box">
+            <i class="fas fa-flask"></i>
+            <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1"
+              class="purecounter"></span>
+            <p>Research Labs</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+          <div class="count-box">
+            <i class="fas fa-award"></i>
+            <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"
+              class="purecounter"></span>
+            <p>Awards</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Counts Section -->
+
+  <!-- ======= Services Section ======= -->
+  <section id="services" class="services">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Services</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+          in iste officiis commodi quidem hic quas.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="icon-box">
+            <div class="icon"><i class="fas fa-heartbeat"></i></div>
+            <h4><a href="">Lorem Ipsum</a></h4>
+            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+          <div class="icon-box">
+            <div class="icon"><i class="fas fa-pills"></i></div>
+            <h4><a href="">Sed ut perspiciatis</a></h4>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+          <div class="icon-box">
+            <div class="icon"><i class="fas fa-hospital-user"></i></div>
+            <h4><a href="">Magni Dolores</a></h4>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="fas fa-dna"></i></div>
+            <h4><a href="">Nemo Enim</a></h4>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="fas fa-wheelchair"></i></div>
+            <h4><a href="">Dele cardo</a></h4>
+            <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="fas fa-notes-medical"></i></div>
+            <h4><a href="">Divera don</a></h4>
+            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Services Section -->
+
+  <!-- ======= Appointment Section ======= -->
+  <section id="appointment" class="appointment section-bg">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Make an Appointment</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+          in iste officiis commodi quidem hic quas.</p>
+      </div>
+
+      <form method="post" role="form">
+        {% csrf_token %}
+        <div class="php-email-form">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              {{appointmentform.name}}
+              <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+              {{appointmentform.email}}
+              <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+              {{appointmentform.phone_number}}
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 form-group mt-3">
+              {% comment %} <input type="datetime" name="date" class="form-control datepicker" id="date"
+                placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars"> 
+              {% endcomment %}
+              {{appointmentform.appointment_date}}
+              <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3">
+              {{appointmentform.doctor}}
+              <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3">
+              {{appointmentform.department}}
+              <div class="validate"></div>
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            {{appointmentform.message}}
+            <div class="validate"></div>
+          </div>
+        </div>
+        <div class="text-center"><button type="submit" class='btn btn-primary' name="btnContact"
+            style='width:400px; margin-top: 30px; border-radius: 20px;'>Make an Appointment</button></div>
+      </form>
+
+    </div>
+  </section><!-- End Appointment Section -->
+  <!-- ======= Departments Section ======= -->
+  <section id="departments" class="departments">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Departments</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+          in iste officiis commodi quidem hic quas.</p>
+      </div>
+
+      <div class="row gy-4">
+        <div class="col-lg-3">
+          <ul class="nav nav-tabs flex-column">
+            {% for department in departments %}
+            <li class="nav-item">
+              <a class="nav-link {% if forloop.counter == 1 %}active show{% endif %}" data-bs-toggle="tab"
+                href="#tab-{{forloop.counter}}">{{department}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-lg-9">
+          <div class="tab-content">
+            {% for department in departments %}
+            <div class="tab-pane {% if forloop.counter == 1 %}active show{% endif %}" id="tab-{{forloop.counter}}">
+              <div class="row gy-4">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>{{department}}</h3>
+                  <p class="fst-italic">{{department.short_intro}}</p>
+                  <p>{{department.bio}}</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="{{department.profile_image.url}}" alt="" class="img-fluid">
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Departments Section -->
+
+  <!-- ======= Doctors Section ======= -->
+  <section id="doctors" class="doctors">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Doctors</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+          in iste officiis commodi quidem hic quas.</p>
+      </div>
+
+      <div class="row">
+        {% for doctor in doctors %}
+        <div class="col-lg-6 mt-4">
+          <div class="member d-flex align-items-start">
+            <div class="pic"><img src="{{doctor.profile_image.url}}" class="img-fluid" alt="{{doctor}}"></div>
+            <div class="member-info">
+              <h4>{{doctor}}</h4>
+              <span>{{doctor.short_intro}}</span>
+              <p>{{doctor.bio}}</p>
+              <div class="social">
+                <a href="{{doctor.social_twitter}}"><i class="ri-twitter-fill"></i></a>
+                <a href="{{doctor.social_facebook}}"><i class="ri-facebook-fill"></i></a>
+                <a href="{{doctor.social_instagram}}"><i class="ri-instagram-fill"></i></a>
+                <a href="{{doctor.social_linkedin}}"> <i class="ri-linkedin-box-fill"></i> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section><!-- End Doctors Section -->
+
+  <!-- ======= Frequently Asked Questions Section ======= -->
+  <section id="faq" class="faq section-bg">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+          in iste officiis commodi quidem hic quas.</p>
+      </div>
+
+      <div class="faq-list">
+        <ul>
+          {% for faq in FAQs %}
+          <li data-aos="fade-up">
+            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
+              data-bs-target="#faq-list-{{forloop.counter}}">{{faq}}<i class="bx bx-chevron-down icon-show"></i><i
+                class="bx bx-chevron-up icon-close"></i></a>
+            <div id="faq-list-{{forloop.counter}}" class="collapse {% if forloop.counter == 1 %}show{% endif %}"
+              data-bs-parent=".faq-list">
+              <p>{{faq.answer}}</p>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+  </section><!-- End Frequently Asked Questions Section -->
+
+  <!-- ======= Testimonials Section ======= -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+
+      <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+          {% for testimonial in testimonials %}
+          <div class="swiper-slide">
+            <div class="testimonial-wrap">
+              <div class="testimonial-item">
+                <img src="{{testimonial.owner_image.url}}" class="testimonial-img" alt="{{testimonial}}">
+                <h3>{{testimonial}}</h3>
+                <h4>{{testimonial.owner_job}}</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  {{testimonial.testi}}
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div>
+          </div><!-- End testimonial item -->
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+    </div>
+  </section><!-- End Testimonials Section -->
+
+  <!-- ======= Gallery Section ======= -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Gallery</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+          in iste officiis commodi quidem hic quas.</p>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row g-0">
+        {% for gallery in galleries %}
+        <div class="col-lg-3 col-md-4">
+          <div class="gallery-item">
+            <a href="{{gallery.gallery_image.url}}" class="galelry-lightbox">
+              <img src="{{gallery.gallery_image.url}}" alt="{{gallery}}" class="img-fluid">
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section><!-- End Gallery Section -->
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+          in iste officiis commodi quidem hic quas.</p>
+      </div>
+    </div>
+
+    <div>
+      <iframe style="border:0; width: 100%; height: 350px;"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.951859811752!2d106.70764387469778!3d10.814996089336155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528974785f535%3A0x46f1eceed12c18d6!2zMzYzIMSQaW5oIELhu5kgTMSpbmgsIFBoxrDhu51uZyAyNiwgQsOsbmggVGjhuqFuaCwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1686890237737!5m2!1sen!2s"
+        frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="container">
+      <div class="row mt-5">
+
+        <div class="col-lg-4">
+          <div class="info">
+            <div class="address">
+              <i class="bi bi-geo-alt"></i>
+              <h4>Location:</h4>
+              <p>Binh Thanh, Ho Chi Minh City, Viet Nam</p>
+            </div>
+
+            <div class="email">
+              <i class="bi bi-envelope"></i>
+              <h4>Email:</h4>
+              <p>tientrung2899@gmail.com</p>
+            </div>
+
+            <div class="phone">
+              <i class="bi bi-phone"></i>
+              <h4>Call:</h4>
+              <p>+84 358 432 114</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-8 mt-5 mt-lg-0">
+          <form method="post">
+            {% csrf_token %}
+            <div class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  {{contactform.name}}
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  {{contactform.email}}
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                {{contactform.subject}}
+              </div>
+              <div class="form-group mt-3">
+                {{contactform.message}}
+              </div>
+            </div>
+            <div class="text-center"><button type='submit' class='btn btn-primary' name="btnContact"
+                style='width:300px; margin-top: 30px; border-radius: 20px;'>Send Message</button></div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+{% include 'footer.html' %}
+{% endblock content %}
+
+{% block extra_script %}
+<script>
+  // Wait for the document to be ready
+  $(document).ready(function() {
+    // Get the department select field element
+    var departmentField = $('#department');
+
+    // Get the doctor select field element
+    var doctorField = $('#doctor');
+
+    // Add an event listener to the doctor field
+    doctorField.on('change', function() {
+      var selectedDoctorId = $(this).val();  // Get the selected doctor ID
+
+      // Make an AJAX request to retrieve the department of the selected doctor
+      $.ajax({
+        url: '{% url 'medilab:get_department' %}',  // Replace with the actual URL to retrieve the department
+        method: 'GET',
+        data: {doctor_id: selectedDoctorId},
+        success: function(response) {
+          // Update the department field with the retrieved department
+          departmentField.val(response.department_id);
+        },
+        error: function(xhr, status, error) {
+          // Handle the error if necessary
+          console.error(error);
+        }
+      });
+    });
+  });
+</script>
+
+{% endblock extra_script %}

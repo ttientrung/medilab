@@ -1,0 +1,79 @@
+{% extends '_master.html' %}
+{% load static %}
+{% block style_login %}
+<link rel="stylesheet" href="{% static 'assets/css/styles.min.css' %}" />
+{% endblock style_login %}
+{% block content %}
+
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    style="top: 150px;">
+    <!--  Main wrapper -->
+    <div class="container-fluid d-flex align-items-center justify-content-center">
+        <!--  Row 1 -->
+        <div class="card" style="height: 50%; width: 70%;">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Are you sure you want to delete your appointment</h5>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <button type='submit' class='btn btn-primary'>Delete Appointment
+                        </button>
+                    </div>
+                </form>
+                {% comment %} <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div>
+                                <button type='submit' class='btn btn-primary' style='margin-top: 30px'>Delete Appointment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_script %}
+<script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/sidebarmenu.js' %}"></script>
+<script src="{% static 'assets/js/app.min.js' %}"></script>
+<script src="{% static 'assets/libs/apexcharts/dist/apexcharts.min.js' %}"></script>
+<script src="{% static 'assets/libs/simplebar/dist/simplebar.js' %}"></script>
+<script src="{% static 'assets/js/dashboard.js' %}"></script>
+
+<script>
+    // Wait for the document to be ready
+    $(document).ready(function () {
+        // Get the department select field element
+        var departmentField = $('#department');
+
+        // Get the doctor select field element
+        var doctorField = $('#doctor');
+
+        // Add an event listener to the doctor field
+        doctorField.on('change', function () {
+            var selectedDoctorId = $(this).val();  // Get the selected doctor ID
+
+            // Make an AJAX request to retrieve the department of the selected doctor
+            $.ajax({
+                url: '{% url 'medilab:get_department' %}',  // Replace with the actual URL to retrieve the department
+                method: 'GET',
+                data: { doctor_id: selectedDoctorId },
+                success: function (response) {
+                    // Update the department field with the retrieved department
+                    departmentField.val(response.department_id);
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error if necessary
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
+{% endblock extra_script %}

@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block style %}
+{% endblock style %}
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Medilab{% block title %}{% endblock title %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'images/medical.png' %}" rel="icon">
+  {% comment %}
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon"> {% endcomment %}
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  {% block style_login %}{% endblock style_login %}
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+  <!-- Fengyuan Chen's Datepicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css"
+    integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"
+    integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+
+  <!-- =======================================================
+  * Template Name: Medilab
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  {% comment %} {% if messages %}
+  {% for message in messages %}
+  <div style="position: fixed; top: 150px; left: 50%; transform: translate(-50%, -50%); z-index: 99999;"
+    class="alert {{message.tags}} alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+    </button>
+  </div>
+  {% endfor %}
+  {% endif %} {% endcomment %}
+  {% if messages %}
+  <div style="position: fixed; top: 150px; left: 50%; transform: translate(-50%, -50%); z-index: 99999; font-size: 14px;">
+    {% for message in messages %}
+    <div class="alert alert-dismissible fade show {{ message.tags }}" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  {% include 'navbar.html' %}
+  {% block hero %}{% endblock hero %}
+  {% block content %}{% endblock content %}
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script>
+    // Invoke Functions Call on Document Loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      hljs.highlightAll();
+    });
+
+
+    let alertWrapper = document.querySelector('.alert')
+    let alertClose = document.querySelector('.btn-close')
+
+    if (alertWrapper) {
+      alertClose.addEventListener('click', () =>
+        alertWrapper.style.display = 'none'
+      )
+    }
+  </script>
+
+  
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_script %}{% endblock extra_script %}
+  <script>
+    $(function () {
+      $("#date").datepicker();
+    });
+  </script>
+
+</body>
+
+</html>

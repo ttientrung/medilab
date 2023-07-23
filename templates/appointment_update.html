@@ -1,0 +1,109 @@
+{% extends '_master.html' %}
+{% load static %}
+{% block style_login %}
+<link rel="stylesheet" href="{% static 'assets/css/styles.min.css' %}" />
+{% endblock style_login %}
+{% block content %}
+
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    style="top: 150px;">
+    <!--  Main wrapper -->
+    <div class="container-fluid d-flex align-items-center justify-content-center">
+        <!--  Row 1 -->
+        <div class="card" style="height: 50%; width: 70%;">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Update Your Appointment</h5>
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{form.name}}
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-md-4 form-group mt-3 mt-md-0">
+                                    {{form.email}}
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-md-4 form-group mt-3 mt-md-0">
+                                    {{form.phone_number}}
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group mt-3">
+                                    {% comment %} <input type="datetime" name="date" class="form-control datepicker"
+                                        id="date" placeholder="Appointment Date" data-rule="minlen:4"
+                                        data-msg="Please enter at least 4 chars">
+                                    {% endcomment %}
+                                    {{form.appointment_date}}
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-md-4 form-group mt-3">
+                                    {{form.doctor}}
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-md-4 form-group mt-3">
+                                    {{form.department}}
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                {{form.message}}
+                                <div class="validate"></div>
+                            </div>
+                            <div>
+                                <button type='submit' class='btn btn-primary' style='margin-top: 30px'>Update Your
+                                    Appointment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_script %}
+<script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/sidebarmenu.js' %}"></script>
+<script src="{% static 'assets/js/app.min.js' %}"></script>
+<script src="{% static 'assets/libs/apexcharts/dist/apexcharts.min.js' %}"></script>
+<script src="{% static 'assets/libs/simplebar/dist/simplebar.js' %}"></script>
+<script src="{% static 'assets/js/dashboard.js' %}"></script>
+
+<script>
+    // Wait for the document to be ready
+    $(document).ready(function () {
+        // Get the department select field element
+        var departmentField = $('#department');
+
+        // Get the doctor select field element
+        var doctorField = $('#doctor');
+
+        // Add an event listener to the doctor field
+        doctorField.on('change', function () {
+            var selectedDoctorId = $(this).val();  // Get the selected doctor ID
+
+            // Make an AJAX request to retrieve the department of the selected doctor
+            $.ajax({
+                url: '{% url 'medilab:get_department' %}',  // Replace with the actual URL to retrieve the department
+                method: 'GET',
+                data: { doctor_id: selectedDoctorId },
+                success: function (response) {
+                    // Update the department field with the retrieved department
+                    departmentField.val(response.department_id);
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error if necessary
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
+{% endblock extra_script %}
