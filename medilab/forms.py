@@ -1,5 +1,6 @@
 from django import forms
 from .models import Contact, Appointment, Doctor, Department, Newletters
+from doctor.models import Doctorprofile
 from django.core.validators import RegexValidator
 
 phone_validator = RegexValidator(
@@ -100,7 +101,7 @@ class AppointmentForm(forms.ModelForm):
         'disabled':'disabled',
     }))
 
-    doctor = forms.ModelChoiceField(queryset=Doctor.objects.all(), label='Doctor', widget=forms.Select(attrs={
+    doctor = forms.ModelChoiceField(queryset=Doctorprofile.objects.all(), label='Doctor', widget=forms.Select(attrs={
         'placeholder': 'Select Doctor',
         'name': 'doctor',
         'id': 'doctor',
@@ -124,9 +125,8 @@ class AppointmentForm(forms.ModelForm):
         if self.request.user.is_authenticated:
             self.fields['name'].initial = self.request.user.first_name
             self.fields['email'].initial = self.request.user.email
-            # self.fields['phone_number'].initial = self.request.user.profile.phone_number
-        self.fields['department'].initial = Doctor.objects.all()[0].department
-        self.fields['doctor'].initial = Doctor.objects.all()[0]
+        # self.fields['department'].initial = Doctorprofile.objects.all()[0].department
+        # self.fields['doctor'].initial = Doctorprofile.objects.all()[0]
         # self.fields['doctor'].queryset = self.get_department().doctor_set.all()
     
     # def get_department(self):

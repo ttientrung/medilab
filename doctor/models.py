@@ -1,10 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
-from medilab.models import Department
 import uuid
 
-
 # Create your models here.
+class Department(models.Model):
+    name = models.CharField(max_length= 200, null=True, blank=True)
+    short_intro = models.CharField(max_length= 2000, null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
+    profile_image = models.ImageField(null=True, blank=True, upload_to='departments/', default="department/default.jpg")
+
+    def __str__(self):
+        return str(self.name)
+
 class Doctorprofile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length= 200, null=True, blank=True)
@@ -27,4 +34,5 @@ class Doctorprofile(models.Model):
 
     def __str__(self):
         return str(self.name)
+    
     

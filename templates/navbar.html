@@ -45,10 +45,10 @@
         <li><a class="nav-link scrollto" href="{% url 'medilab:index' %}#services">Services</a></li>
         <li><a class="nav-link scrollto" href="{% url 'medilab:index' %}#departments">Departments</a></li>
         <li><a class="nav-link scrollto" href="{% url 'medilab:index' %}#doctors">Doctors</a></li>
-        <li class="dropdown active"><a class="nav-link {% if page == 'healthcure' %}active{% endif %}"href="#"><span>Health Cure</span> <i class="bi bi-chevron-down"></i></a>
+        {% comment %} <li class="dropdown active"><a class="nav-link {% if page == 'healthcure' %}active{% endif %}"href="#"><span>Health Cure</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="{% url 'healthcure:breast-cancer' %}">Breast Cancer</a></li>
-            {% comment %} <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
+            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
                   class="bi bi-chevron-right"></i></a>
               <ul>
                 <li><a href="#">Deep Drop Down 1</a></li>
@@ -57,11 +57,11 @@
                 <li><a href="#">Deep Drop Down 4</a></li>
                 <li><a href="#">Deep Drop Down 5</a></li>
               </ul>
-            </li> {% endcomment %}
+            </li> 
             <li><a href="{% url 'healthcure:diabetes' %}">Diabetes</a></li>
             <li><a href="{% url 'healthcure:heart-disease' %}">Heart Diseases</a></li>
           </ul>
-        </li>
+        </li> {% endcomment %}
         <li><a class="nav-link scrollto" href="{% url 'medilab:index' %}#contact">Contact</a></li>
         {% if request.user.is_authenticated %}
         {% comment %} {% if user. %} {% endcomment %}

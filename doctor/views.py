@@ -15,7 +15,7 @@ def doctorAccount(request):
     if request.method == 'POST':
         profileForm = doctorProfileForm(request.POST, request.FILES, instance=profile)
         if profileForm.is_valid():
-            profileForm.save()
+            profile = profileForm.save()
             messages.success(request, 'Your profile was update successfully!')
             return redirect('doctor:doctor-account')
         else:
@@ -27,10 +27,6 @@ def doctorAccount(request):
 def doctorAccountAppointment(request):
     page = 'doctor-account'
     profile = request.user.doctorprofile
-    # appointmentform = AppointmentForm()
-    # appointments = Appointment.objects.filter(owner=profile)
-    appointments = []
-    print(appointments)
+    appointments = Appointment.objects.filter(doctor=profile)
     context = {'profile': profile, 'appointments': appointments, 'page': page}
     return render(request, 'doctor/doctor_account_appointment.html', context)
-# Create your views here.

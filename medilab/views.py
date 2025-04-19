@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
-from medilab.models import Department, Doctor, FAQ, Testimonial, Gallery, Contact
+from medilab.models import Doctor, FAQ, Testimonial, Gallery, Contact
+from doctor.models import Doctorprofile, Department
 from .forms import ContactForm, AppointmentForm, NewlettersForm
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -10,7 +11,7 @@ from user.decorators import allowed_users
 # @allowed_users(allowed_roles=['admin'])
 def index(request):
     departments = Department.objects.all()
-    doctors = Doctor.objects.all()
+    doctors = Doctorprofile.objects.all()
     FAQs = FAQ.objects.all()
     testimonials = Testimonial.objects.all()
     galleries = Gallery.objects.all()
@@ -65,7 +66,7 @@ def index(request):
 
 def get_department(request):
     doctor_id = request.GET.get('doctor_id')
-    department = Doctor.objects.get(id=doctor_id).department
+    department = Doctorprofile.objects.get(id=doctor_id).department
 
     return JsonResponse({'department_id': department.id})
 # Create your views here.

@@ -25,9 +25,9 @@ def loginUser(request):
         user = authenticate(request, username= username, password= password)
         if user is not None:
             login(request, user)
-            if request.user.groups.all()[0].name == 'doctor':
+            is_doctor = request.user.groups.filter(name="doctors").exists()
+            if is_doctor:
                 messages.info(request, 'Welcome back')
-                # return HttpResponse('You are not authorized to view this page')
                 return redirect('doctor:doctor-account')
             else:
                 messages.info(request, 'Welcome back')

@@ -2,15 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from user.models import Profile
-
-class Department(models.Model):
-    name = models.CharField(max_length= 200, null=True, blank=True)
-    short_intro = models.CharField(max_length= 2000, null=True, blank=True)
-    bio = models.TextField(null=True, blank=True)
-    profile_image = models.ImageField(null=True, blank=True, upload_to='departments/', default="department/default.jpg")
-
-    def __str__(self):
-        return str(self.name)
+from doctor.models import Doctorprofile, Department
     
 class Doctor(models.Model):
     name = models.CharField(max_length= 200, null=True, blank=True)
@@ -66,7 +58,7 @@ class Appointment(models.Model):
     phone_number = models.CharField(max_length=17,null=True, blank=True)
     appointment_date = models.DateTimeField()
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
-    doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL, null=True, blank=True)
+    doctor = models.ForeignKey(Doctorprofile, on_delete=models.SET_NULL, null=True, blank=True)
     message = models.TextField()
     created_day = models.DateTimeField(default=timezone.now)
 
