@@ -517,25 +517,20 @@
   $(document).ready(function() {
     // Get the department select field element
     var departmentField = $('#department');
-
-    // Get the doctor select field element
     var doctorField = $('#doctor');
 
-    // Add an event listener to the doctor field
     doctorField.on('change', function() {
-      var selectedDoctorId = $(this).val();  // Get the selected doctor ID
+      var selectedDoctorId = $(this).val();
 
-      // Make an AJAX request to retrieve the department of the selected doctor
       $.ajax({
-        url: '{% url 'medilab:get_department' %}',  // Replace with the actual URL to retrieve the department
+        url: '{% url 'medilab:get_department' %}',
         method: 'GET',
         data: {doctor_id: selectedDoctorId},
         success: function(response) {
-          // Update the department field with the retrieved department
           departmentField.val(response.department_id);
+          departmentField.prop('disabled', true); // Keep the department field disabled
         },
         error: function(xhr, status, error) {
-          // Handle the error if necessary
           console.error(error);
         }
       });

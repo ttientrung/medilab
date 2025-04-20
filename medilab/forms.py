@@ -83,12 +83,12 @@ class AppointmentForm(forms.ModelForm):
         'title': "Your phone number must be (xxx)xxxxxxxxx or 0xxxxxxxxx"
     }))
 
-    appointment_date = forms.DateField(widget=forms.widgets.DateInput(attrs={
+    appointment_date = forms.DateField(widget=forms.DateInput(attrs={
         'placeholder': 'Appointment Date',
-        'type': 'datetime',
+        'type': 'date',
         'name': 'date',
         'id': 'date',
-        'class': "form-control datepicker",
+        'class': "form-control",
         'data-rule': 'minlen:4',
         'data-msg': 'Please enter at least 4 chars'
     }))
@@ -98,7 +98,6 @@ class AppointmentForm(forms.ModelForm):
         'name': 'department',
         'id': 'department',
         'class': "form-select",
-        'disabled':'disabled',
     }))
 
     doctor = forms.ModelChoiceField(queryset=Doctorprofile.objects.all(), label='Doctor', widget=forms.Select(attrs={

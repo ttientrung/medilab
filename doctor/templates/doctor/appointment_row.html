@@ -1,0 +1,25 @@
+<tr>
+    <td class="border-bottom-0">
+        <h6 class="fw-semibold mb-1">{{ appointment.owner }}</h6>
+    </td>
+    <td class="border-bottom-0">
+        <h6 class="mb-0 fw-normal mb-1">{{ appointment.doctor }}</h6>
+    </td>
+    <td class="border-bottom-0">
+        <h6 class="mb-0 fw-normal mb-1">{{ appointment.department }}</h6>
+    </td>
+    <td class="border-bottom-0">
+        <h6 class="mb-0 fw-normal mb-1">{{ appointment.appointment_date }}</h6>
+    </td>
+    <td class="border-bottom-0">
+        <h6 class="mb-0 fw-normal mb-1">{{ appointment.created_day }}</h6>
+    </td>
+    <td class="border-bottom-0">
+        <a href="{% url 'user:appointment-update' appointment.pk %}" class="appointment-btn" style="margin-left: 0;"><span
+                class="d-none d-md-inline">Update</span></a>
+    </td>
+    <td class="border-bottom-0">
+        <a href="{% url 'user:appointment-delete' appointment.pk %}" class="appointment-btn" style="margin-left: 0;"><span
+                class="d-none d-md-inline">Delete</span></a>
+    </td>
+</tr>

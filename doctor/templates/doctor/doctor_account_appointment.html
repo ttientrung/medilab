@@ -238,5 +238,41 @@
 <script src="{% static 'assets/js/app.min.js' %}"></script>
 <script src="{% static 'assets/libs/apexcharts/dist/apexcharts.min.js' %}"></script>
 <script src="{% static 'assets/libs/simplebar/dist/simplebar.js' %}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let appointmentCounter = {{ appointments|length }};
+    const ws = new WebSocket('ws://' + window.location.host + '/ws/doctor_dashboard/');
+
+    ws.onmessage = function(event) {
+      const data = JSON.parse(event.data);
+      if (data.type === 'new_appointment') {
+        appointmentCounter++;
+        const appointmentHtml = data.appointment;
+        const tableBody = document.querySelector('table tbody');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = appointmentHtml;
+
+        // Update the patient name to include the modal link
+        const patientCell = newRow.querySelector('td:nth-child(2) h6');
+        patientCell.innerHTML = '<a data-bs-toggle="modal" data-bs-target="#appointment' + data.appointment_id + '">' + patientCell.textContent + '</a>';
+
+        // Add the appointment ID to the first cell
+        const idCell = document.createElement('td');
+        idCell.classList.add('border-bottom-0');
+        idCell.innerHTML = '<h6 class="fw-semibold mb-0">' + appointmentCounter + '</h6>';
+        newRow.insertBefore(idCell, newRow.firstChild);
+
+        tableBody.appendChild(newRow);
+      }
+    };
+
+    ws.onopen = function(event) {
+      console.log('WebSocket connection opened');
+    };
+
+    ws.onclose = function(event) {
+      console.log('WebSocket connection closed');
+    };
+  });
 </script>
 {% endblock extra_script %}
